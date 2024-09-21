@@ -1,16 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import userEvent from '@testing-library/user-event';
-
-function App() {
-  return <Board/>
-}
+const tele = window.Telegram.WebApp;
 
 
 export default function Game() {
   const [history,setHistory] = useState([Array(9).fill(null)])
-
+useEffect(()=>{
+  tele.ready();
+});
   
   const [currentMove,setCurrentMove] = useState(0)
   const currentSquares = history[currentMove];
